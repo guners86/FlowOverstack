@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   
+  # Se ejecuta el merodo public_access para todas las acciones excepto destroy
+  before_action :public_access, except: [:destroy]
+  
   def new
   end
   
