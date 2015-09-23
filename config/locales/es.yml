@@ -1,0 +1,17 @@
+es:
+  errors:
+    messages:
+      blank: "no puede estar en blanco"
+      too_long: "no puede tener mas de "
+
+  activerecord:
+    attributes:
+      question:
+        title: "Titulo"
+        body: "Pregunta"
+    errors:
+      models:
+        question:
+          attributes:
+            title:
+              too_long: "Titulo no puede tener mas de 100 Caracteres"
