@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   root 'questions#index'
   resources :questions
   
+  resources :questions do
+	  resources :answers, only: [:create] # ruta de respuestas asociada a la pregunta
+	end
+  
   # Configuracion rutas users -> Solo se permite new y create 
   resources :users, only: [:new, :create]
   
