@@ -10,11 +10,58 @@
           </div>
         </div>
         
-        <h2>Respuestas(<%= @question.answers.count %>)</h2>
+        <h2>(<%= @question.comments.count %>) Comentario(s)</h2>
+        
+        <% @question.comments.each do |comment| %>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  <span class="question-title"><%= comment.body %></span>
+                  <span class="question-description">Comentario realizado por <%= comment.user.name %></span>
+                  <p></p>
+                </div>
+            </div>
+        <% end %>
+        
+        <% if signed_in? %>
+            <%= form_for [@question, @question.comments.build] do |f| %>
+                <div class="form-group">
+                  <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
+                </div>
+        
+                <div class="actions text-right">
+                  <%= f.submit "Comentar", class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        <% end %>
+        
+        <h2>(<%= @question.answers.count %>) Respuesta(s)</h2>
         
         <% @question.answers.each do |answer| %>
             <div class="panel panel-default">
                 <div class="panel-body"><%= answer.body %></div>
+                
+                <% answer.comments.each do |comment| %>
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                        <span class="question-title"><%= comment.body %></span>
+                        <span class="question-description">Comentario realizado por <%= comment.user.name %></span>
+                        <p></p>
+                      </div>
+                  </div>
+                <% end %>
+                
+                <% if signed_in? %>
+                  <%= form_for [answer, answer.comments.build] do |f| %>
+                    <div class="form-group">
+                      <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
+                    </div>
+                
+                    <div class="actions text-right">
+                      <%= f.submit "Comentar", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+                <% end %>
+                
             </div>
         <% end %>
         
