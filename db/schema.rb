@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929204228) do
+ActiveRecord::Schema.define(version: 20151001013958) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "body"
@@ -52,5 +52,15 @@ ActiveRecord::Schema.define(version: 20150929204228) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "voteable_id"
+    t.string   "voteable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end

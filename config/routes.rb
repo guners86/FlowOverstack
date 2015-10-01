@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   resources :questions do
 	  resources :answers, only: [:create] # ruta de respuestas asociada a la pregunta
 	  resources :comments, only: [:create]
+	  resource :vote, only: [:create, :destroy]
 	end
 	
 	resources :answers do
 	  resources :comments, only: [:create]
+	  resource :vote, only: [:create, :destroy]
 	end
   
   # Configuracion rutas users -> Solo se permite new y create 

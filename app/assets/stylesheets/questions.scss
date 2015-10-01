@@ -33,6 +33,85 @@
   font-size: 16px;
 }
 
+.question-summary .cp {
+    vertical-align: top;
+    float: left;
+    margin-right: 10px;
+}
+
+.question-summary .cp .votes {
+    text-align: center;
+    display: inline-block;
+    height: 38px;
+    min-width: 38px;
+    //margin: 0 3px 0 0;
+    font-size: 14px;
+    color: #777;
+    padding: 5px 5px 6px 5px;
+}
+
+
+
+.question-summary .cp .votes .mini-count .upvote-arrow {
+    border-bottom: 9px solid #534540;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 9px solid transparent;
+    left: 10px;
+    //position: absolute;
+    top: 0px;
+}
+
+.question-summary .cp .votes .mini-count .upvote-count {
+    display: block;
+    margin-top: 10px;
+}
+
+// .question-summary .cp .upvote-count {
+//     display: block;
+//     color: #303030;
+//     font-size: 14px;
+//     font-weight: bold;
+//     line-height: 1;
+//     margin-top: 18px;
+//   }
+
+
+// .product-upvote {
+//   position: relative;
+//   float: left;
+//   text-align: center;
+//   text-decoration: none;
+//   margin-right: 20px;
+//   padding: 5px 5px;
+//   width: 35px;
+
+//   .upvote-arrow {
+//     border-bottom: 9px solid #534540;
+//     border-left: 7px solid transparent;
+//     border-right: 7px solid transparent;
+//     border-top: 9px solid transparent;
+//     left: 10px;
+//     position: absolute;
+//     top: 0px;
+//   }
+
+//   .upvote-count {
+//     display: block;
+//     color: #303030;
+//     font-size: 14px;
+//     font-weight: bold;
+//     line-height: 1;
+//     margin-top: 18px;
+//   }
+
+//   &:hover .upvote-arrow { border-bottom-color: #F04500; }
+
+//   &.upvote-active {
+//     .upvote-arrow { border-bottom-color: #F04500; }
+//     .upvote-count { color: #F04500; }
+//   }
+// }
 
 
 
