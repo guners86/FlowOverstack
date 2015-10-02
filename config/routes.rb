@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   # Configuracion rutas questions
   root 'questions#index'
-  resources :questions
   
   resources :questions do
 	  resources :answers, only: [:create] # ruta de respuestas asociada a la pregunta
