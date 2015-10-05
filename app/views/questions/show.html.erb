@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-      <div class="questions">
+      <div class="question">
       	
-      	<h1><%= @question.title %></h1>
+      	<div class="question-title">
+      	  <h1><%= @question.title %></h1>
+      	</div>
+      	
       	
       	<div class="question-summary">
       	  <div class="cp">
@@ -29,80 +32,117 @@
       	  </div>
       	  
       	  <div class="summary">
-            <span class="question-description"><%= @question.body %></span>
-          </div>
-      	</div>
-        
-        <h2>(<%= @question.comments.count %>) Comentario(s)</h2>
-        
-        <% @question.comments.each do |comment| %>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                  <span class="question-title"><%= comment.body %></span>
-                  <span class="question-description">Comentario realizado por <%= comment.user.name %></span>
-                  <p></p>
-                </div>
+      	    <div class="question-body">
+      	      <span class="question-description"><%= @question.body %></span>
+      	    </div>
+            
+            <div class"comments">
+              <h3><%= @question.comments.count %> - Comentario(s)</h3>
             </div>
-        <% end %>
-        
-        <% if signed_in? %>
-            <%= form_for [@question, @question.comments.build] do |f| %>
+            
+            <% @question.comments.each do |comment| %>
+              <div class="comment-body">
+                <span class="comment-description"><%= comment.body %></span>
+                <span class="comment-owner">Comentario realizado por <%= comment.user.name %></span>
+              </div>
+            <% end %>
+            
+            <% if signed_in? %>
+              <%= form_for [@question, @question.comments.build] do |f| %>
                 <div class="form-group">
                   <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
                   <%= f.hidden_field :commentable_type, value: "Question" %>
                   <%= f.hidden_field :commentable_id, value: @question.id %>
                 </div>
-        
+            
                 <div class="actions text-right">
                   <%= f.submit "Comentar", class: "btn btn-primary" %>
                 </div>
+              <% end %>
             <% end %>
-        <% end %>
+            
+          </div>
+      	</div>
         
-        <h2>(<%= @question.answers.count %>) Respuesta(s)</h2>
+        <div class="answers">
+          <h3><%= @question.answers.count %> - Respuesta(s)</h3>
+        </div>
         
         <% @question.answers.each do |answer| %>
-            <div class="panel panel-default">
-                <div class="panel-body"><%= answer.body %></div>
+        
+          <div class="answer-summary">
+        	  <div class="cp">
+        	    
+        	    <div class="answer-votes">
+        	      <div class="mini-count">
+        	        
+        	        <% if answer.voted_by? current_user %>
+        	          <%= link_to answer_vote_path(answer, :commentable_type => "Answer", :commentable_id => answer.id), method: :delete, class: "product-upvote upvote-active" do %>
+                      <span class="upvote-arrow"></span>
+                      <span class="upvote-count"><%= answer.votes.count %></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to answer_vote_path(answer, :commentable_type => "Answer", :commentable_id => answer.id), method: :post, class: "product-upvote" do %>
+                      <span class="upvote-arrow"></span>
+                      <span class="upvote-count"><%= answer.votes.count %></span>
+                    <% end %>
+                  <% end %>
+        	        
+        	      </div>
+        	      <div>Votos</div>
+        	    </div>
+        	    
+        	  </div>
+        	  
+        	  <div class="summary">
+        	    
+        	    <div class="answer-body">
+        	      <span class="answer-description"><%= answer.body %></span>
+        	    </div>
+        	    
+        	    <div class"comments">
+                <h3><%= answer.comments.count %> - Comentario(s)</h3>
+              </div>
+        	    
+        	    <% answer.comments.each do |comment| %>
+                <div class="comment-body">
+                  <span class="comment-description"><%= comment.body %></span>
+                  <span class="comment-owner">Comentario realizado por <%= comment.user.name %></span>
+                </div>
+              <% end %>
+              
+              <% if signed_in? %>
+                <%= form_for [answer, answer.comments.build] do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
+                    <%= f.hidden_field :commentable_type, value: "Answer" %>
+                    <%= f.hidden_field :commentable_id, value: answer.id %>
+                  </div>
                 
-                <% answer.comments.each do |comment| %>
-                  <div class="panel panel-default">
-                      <div class="panel-body">
-                        <span class="question-title"><%= comment.body %></span>
-                        <span class="question-description">Comentario realizado por <%= comment.user.name %></span>
-                        <p></p>
-                      </div>
+                  <div class="actions text-right">
+                    <%= f.submit "Comentar", class: "btn btn-primary" %>
                   </div>
                 <% end %>
-                
-                <% if signed_in? %>
-                  <%= form_for [answer, answer.comments.build] do |f| %>
-                    <div class="form-group">
-                      <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
-                      <%= f.hidden_field :commentable_type, value: "Answer" %>
-                      <%= f.hidden_field :commentable_id, value: answer.id %>
-                    </div>
-                
-                    <div class="actions text-right">
-                      <%= f.submit "Comentar", class: "btn btn-primary" %>
-                    </div>
-                  <% end %>
-                <% end %>
-                
-            </div>
+              <% end %>
+        	    
+        	  </div>   
+        	</div>  
+        	
         <% end %>
-        
-        <% if signed_in? %>
+      
+        <div class="form-answer">
+          <% if signed_in? %>
             <%= form_for [@question, @question.answers.build] do |f| %>
-                <div class="form-group">
-                  <%= f.text_area :body, class: "form-control", placeholder: "Agregar Respuesta" %>
-                </div>
-        
-                <div class="actions text-right">
-                  <%= f.submit "Responder", class: "btn btn-primary" %>
-                </div>
+              <div class="form-group">
+                <%= f.text_area :body, class: "form-control", placeholder: "Agregar Respuesta" %>
+              </div>
+          
+              <div class="actions text-right">
+                <%= f.submit "Responder", class: "btn btn-primary" %>
+              </div>
             <% end %>
-        <% end %>
+          <% end %>
+        </div>
         
       </div>
     </div>
