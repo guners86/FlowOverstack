@@ -54,8 +54,29 @@
                         margin-top: 10px;
                     }
                 }
+            } 
+        }
+        
+        .answer{
+            padding: 10px;
+            text-align: center;
+            float: left;
+            
+            .answer-count {
+                text-align: center;
+                display: inline-block;
+                height: 28px;
+                min-width: 28px;
+                font-size: 14px;
+                color: #777;
+                padding: 5px 5px 6px 5px;
             }
             
+            .answer-description {
+                display: block;
+                color: #999;
+                text-align: center;
+            }
         }
         
         .summary {

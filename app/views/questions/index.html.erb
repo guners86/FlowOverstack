@@ -12,6 +12,11 @@
               <span class="votes-description">Votos</span>
             </div>
             
+            <div class="answer">
+              <span class="answer-count"><%= question.answers.count %></span>
+              <span class="answer-description">Respuestas</span>
+            </div>
+            
             <div class="summary">
               <span class="question-title"><%= link_to question.title, question %></span>
               <span class="question-description">Pregunta realizada por <%= question.user.name %> el <%= question.created_at %></span>
