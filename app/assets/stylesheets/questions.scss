@@ -100,6 +100,169 @@
     }
 }
 
+.question {
+    margin-top: 40px;
+    
+    .question-title{
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .question-summary {
+        overflow: hidden;
+        padding: 10px 0;
+        float: left;
+        width: 728px;
+        
+        .cp {
+            padding: 10px;
+            text-align: center;
+            float: left;
+            
+            .question-votes {
+                text-align: center;
+                display: inline-block;
+                height: 28px;
+                min-width: 28px;
+                margin: 0 3px 0 0;
+                font-size: 14px;
+                color: #777;
+                padding: 5px 5px 6px 5px;
+                
+                .mini-count{
+                    .upvote-arrow {
+                        border-bottom: 9px solid #534540;
+                        border-left: 7px solid transparent;
+                        border-right: 7px solid transparent;
+                        border-top: 9px solid transparent;
+                        left: 10px;
+                        top: 0px;
+                    }
+                    
+                    .upvote-count{
+                        display: block;
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+        
+        .summary {
+            padding: 10px;
+            margin-top: 15px;
+            float: left;
+            width: 90%;
+            
+            .question-body{
+                font-size: 18px;
+                color: #999;
+            }
+            
+            .comment-body{
+                margin-top: 10px;
+                line-height: 1;
+                
+                .comment-description{
+                    display: block;
+                    font-size: 14px;
+                }
+                
+                .comment-owner{
+                    color: #999;
+                    font-size: 10px;
+                }
+            }
+            
+            .form-group{
+                margin-top: 20px;
+            }
+        }
+    }
+    
+    .answers{
+        overflow: hidden;
+        padding: 10px 0;
+        float: left;
+        width: 728px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .answer-summary{
+        overflow: hidden;
+        padding: 10px 0;
+        float: left;
+        width: 728px;
+        
+        .cp {
+            padding: 10px;
+            text-align: center;
+            float: left;
+            
+            .answer-votes {
+                text-align: center;
+                display: inline-block;
+                height: 28px;
+                min-width: 28px;
+                margin: 0 3px 0 0;
+                font-size: 14px;
+                color: #777;
+                padding: 5px 5px 6px 5px;
+                
+                .mini-count{
+                    .upvote-arrow {
+                        border-bottom: 9px solid #534540;
+                        border-left: 7px solid transparent;
+                        border-right: 7px solid transparent;
+                        border-top: 9px solid transparent;
+                        left: 10px;
+                        top: 0px;
+                    }
+                    
+                    .upvote-count{
+                        display: block;
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+        
+        .summary {
+            padding: 10px;
+            margin-top: 15px;
+            float: left;
+            width: 90%;
+            
+            .answer-body{
+                font-size: 18px;
+                color: #999;
+            }
+            
+            .comment-body{
+                margin-top: 10px;
+                line-height: 1;
+                
+                .comment-description{
+                    display: block;
+                    font-size: 14px;
+                }
+                
+                .comment-owner{
+                    color: #999;
+                    font-size: 10px;
+                }
+            }
+            
+            .form-group{
+                margin-top: 20px;
+            }
+        }
+    }
+    
+    .form-answer{
+        width: 715px;
+        margin-bottom: 10px;
+    }
+}
+
 
 
 
