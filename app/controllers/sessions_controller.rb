@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       sign_in(user)
       redirect_to root_path
     else
-      render :new
+      redirect_to login_path, notice: "Tu email y/o contraseña son inválidas. Intenta nuevamente."
     end
   end
   
