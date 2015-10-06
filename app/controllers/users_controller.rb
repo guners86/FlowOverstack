@@ -4,11 +4,21 @@ class UsersController < ApplicationController
     end
 
     def create
+      
       @user = User.new(user_params)
+      
       if @user.save
-        redirect_to root_path
+        
+        user = User.find_by(email: @user.email)
+        if user && user.authenticate(@user.password)
+          sign_in(user)
+          redirect_to root_path
+        else
+          render @user
+        end
+        
       else
-        render :new
+        render @user
       end
     end
     
