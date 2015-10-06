@@ -3,12 +3,18 @@ es:
     messages:
       blank: "no puede estar en blanco"
       too_long: "no puede tener mas de "
+      taken: "no puede estar en blanco"
+      invalid: "no tiene el formato correcto"
 
   activerecord:
     attributes:
       question:
         title: "Titulo"
         body: "Pregunta"
+      user:
+        name: "Nombre"
+        password: "Contraseña"
+        email: "Email"
     errors:
       models:
         question:
