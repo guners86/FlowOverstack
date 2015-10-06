@@ -33,7 +33,7 @@
       	  
       	  <div class="summary">
       	    <div class="question-body">
-      	      <span class="question-description"><%= @question.body %></span>
+      	      <span class="question-description"><%= markdown(@question.body) %></span>
       	    </div>
             
             <div class"comments">
@@ -97,7 +97,7 @@
         	  <div class="summary">
         	    
         	    <div class="answer-body">
-        	      <span class="answer-description"><%= answer.body %></span>
+        	      <span class="answer-description"><%= markdown(answer.body) %></span>
         	    </div>
         	    
         	    <div class"comments">
