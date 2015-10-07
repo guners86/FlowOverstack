@@ -23,5 +23,10 @@ class Question < ActiveRecord::Base
     def voted_by?(user)
         votes.exists?(user: user)
     end
+    
+    # Metodo para la busqueda de productos por titulo o cuerpo de la pregunta
+    def self.search(query)
+        where("title like ? OR body like ?", "%#{query}%", "%#{query}%") 
+    end
   
 end
