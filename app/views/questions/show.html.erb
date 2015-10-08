@@ -49,12 +49,7 @@
               <h3><%= @question.comments.count %> - Comentario(s)</h3>
             </div>
             
-            <% @question.comments.each do |comment| %>
-              <div class="comment-body">
-                <span class="comment-description"><%= comment.body %></span>
-                <span class="comment-owner">Comentario realizado por <%= comment.user.name %></span>
-              </div>
-            <% end %>
+            <%= render partial: "comments", locals: {comments: @question.comments} %>
             
             <% if signed_in? %>
             
@@ -114,13 +109,8 @@
                 <h3><%= answer.comments.count %> - Comentario(s)</h3>
               </div>
         	    
-        	    <% answer.comments.each do |comment| %>
-                <div class="comment-body">
-                  <span class="comment-description"><%= comment.body %></span>
-                  <span class="comment-owner">Comentario realizado por <%= comment.user.name %></span>
-                </div>
-              <% end %>
-              
+        	    <%= render partial: "comments", locals: {comments: answer.comments} %>
+        	    
               <% if signed_in? %>
                 <%= form_for [answer, answer.comments.build] do |f| %>
                   <div class="form-group">
