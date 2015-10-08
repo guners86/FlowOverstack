@@ -1,4 +1,7 @@
 class QuestionsController < ApplicationController
+  
+  before_action :private_access, except: [:index, :show]
+  
   def index
     if params[:search]
       @questions = Question.search(params[:search]).order("created_at DESC")
