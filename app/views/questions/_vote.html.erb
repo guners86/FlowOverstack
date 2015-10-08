@@ -15,4 +15,8 @@
         <% end %>
     <% end %>
 </div>
-<div>Votos</div>
+<% if objectVote.voted_by? current_user %>
+    <div class="voted">Votos</div>
+<% else %>
+    <div>Votos</div>
+<% end %>
