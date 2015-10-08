@@ -19,24 +19,8 @@
       	
       	<div class="question-summary">
       	  <div class="cp">
-      	    
       	    <div class="question-votes">
-      	      <div class="mini-count">
-      	        
-      	        <% if @question.voted_by? current_user %>
-      	          <%= link_to question_vote_path(@question, :commentable_type => "Question", :commentable_id => @question.id), method: :delete, class: "product-upvote upvote-active" do %>
-                    <span class="upvote-arrow"></span>
-                    <span class="upvote-count"><%= @question.votes.count %></span>
-                  <% end %>
-                <% else %>
-                  <%= link_to question_vote_path(@question, :commentable_type => "Question", :commentable_id => @question.id), method: :post, class: "product-upvote" do %>
-                    <span class="upvote-arrow"></span>
-                    <span class="upvote-count"><%= @question.votes.count %></span>
-                  <% end %>
-                <% end %>
-      	        
-      	      </div>
-      	      <div>Votos</div>
+      	      <%= render partial: "vote", locals: {objectVote: @question} %>
       	    </div>
       	  </div>
       	  
@@ -63,26 +47,9 @@
         
           <div class="answer-summary">
         	  <div class="cp">
-        	    
         	    <div class="answer-votes">
-        	      <div class="mini-count">
-        	        
-        	        <% if answer.voted_by? current_user %>
-        	          <%= link_to answer_vote_path(answer, :commentable_type => "Answer", :commentable_id => answer.id), method: :delete, class: "product-upvote upvote-active" do %>
-                      <span class="upvote-arrow"></span>
-                      <span class="upvote-count"><%= answer.votes.count %></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to answer_vote_path(answer, :commentable_type => "Answer", :commentable_id => answer.id), method: :post, class: "product-upvote" do %>
-                      <span class="upvote-arrow"></span>
-                      <span class="upvote-count"><%= answer.votes.count %></span>
-                    <% end %>
-                  <% end %>
-        	        
-        	      </div>
-        	      <div>Votos</div>
+        	      <%= render partial: "vote", locals: {objectVote: answer} %>
         	    </div>
-        	    
         	  </div>
         	  
         	  <div class="summary">
