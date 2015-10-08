@@ -50,21 +50,7 @@
             </div>
             
             <%= render partial: "comments", locals: {comments: @question.comments} %>
-            
-            <% if signed_in? %>
-            
-              <%= form_for [@question, @question.comments.build] do |f| %>
-                <div class="form-group">
-                  <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
-                  <%= f.hidden_field :commentable_type, value: "Question" %>
-                  <%= f.hidden_field :commentable_id, value: @question.id %>
-                </div>
-            
-                <div class="actions text-right">
-                  <%= f.submit "Comentar", class: "btn btn-primary" %>
-                </div>
-              <% end %>
-            <% end %>
+            <%= render partial: "comments_form", locals: {objectComment: @question} %>
             
           </div>
       	</div>
@@ -110,20 +96,7 @@
               </div>
         	    
         	    <%= render partial: "comments", locals: {comments: answer.comments} %>
-        	    
-              <% if signed_in? %>
-                <%= form_for [answer, answer.comments.build] do |f| %>
-                  <div class="form-group">
-                    <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
-                    <%= f.hidden_field :commentable_type, value: "Answer" %>
-                    <%= f.hidden_field :commentable_id, value: answer.id %>
-                  </div>
-                
-                  <div class="actions text-right">
-                    <%= f.submit "Comentar", class: "btn btn-primary" %>
-                  </div>
-                <% end %>
-              <% end %>
+        	    <%= render partial: "comments_form", locals: {objectComment: answer} %>
         	    
         	  </div>   
         	</div>  
