@@ -7,6 +7,15 @@
       	  <h1><%= @question.title %></h1>
       	</div>
       	
+      	<% if @comment.errors.any? %>	
+          <div class="alert alert-danger">
+            <ul>
+          	  <% @comment.errors.full_messages.each do |msg| %>
+          		  <li><%= msg %></li>
+          		<% end %>
+          	</ul>
+          </div>
+        <% end %>
       	
       	<div class="question-summary">
       	  <div class="cp">
@@ -48,6 +57,7 @@
             <% end %>
             
             <% if signed_in? %>
+            
               <%= form_for [@question, @question.comments.build] do |f| %>
                 <div class="form-group">
                   <%= f.text_area :body, class: "form-control", placeholder: "Agregar Comentario" %>
