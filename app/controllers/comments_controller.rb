@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
         # Creamos el comentario para el objeto Question o Answer
         @comment = object.comments.new(comments_params)
         
+        @answer = Answer.new
+        
         if @comment.save
             search_question(object)
             redirect_to question_path(@question)

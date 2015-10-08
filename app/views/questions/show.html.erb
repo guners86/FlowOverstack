@@ -7,7 +7,8 @@
       	  <h1><%= @question.title %></h1>
       	</div>
       	
-      	<% if @comment.errors.any? %>	
+      	<% if @comment.errors.any? %>
+      	  <br />
           <div class="alert alert-danger">
             <ul>
           	  <% @comment.errors.full_messages.each do |msg| %>
@@ -71,8 +72,10 @@
         <% end %>
       
         <div class="form-answer">
+          
           <% if signed_in? %>
             <%= form_for [@question, @question.answers.build] do |f| %>
+            
               <div class="form-group">
                 <%= f.text_area :body, class: "form-control", placeholder: "Agregar Respuesta" %>
               </div>
@@ -81,6 +84,17 @@
                 <%= f.submit "Responder", class: "btn btn-primary" %>
               </div>
             <% end %>
+          <% end %>
+          
+          <% if @answer.errors.any? %>	
+            <br />
+            <div class="alert alert-danger">
+              <ul>
+            	  <% @answer.errors.full_messages.each do |msg| %>
+          	      <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
           <% end %>
         </div>
         

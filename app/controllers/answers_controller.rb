@@ -1,10 +1,17 @@
 class AnswersController < ApplicationController
     
     def create
-        question = Question.find(params[:question_id])
-        question.answers.create(answers_params)
+        @question = Question.find(params[:question_id])
+        @answer = Question.find(params[:question_id]).answers.new(answers_params)
         
-        redirect_to question
+        # Variable de instancia que se crea para la vista de preguntas
+        @comment = Comment.new
+        
+        if @answer.save
+            redirect_to @question
+        else
+            render "questions/show"
+        end
     end
     
     private
