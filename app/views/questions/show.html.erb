@@ -20,7 +20,7 @@
       	<div class="question-summary">
       	  <div class="cp">
       	    <div class="question-votes">
-      	      <%= render partial: "vote", locals: {objectVote: @question} %>
+      	      <%= render partial: "questions/vote", locals: {objectVote: @question} %>
       	    </div>
       	  </div>
       	  
@@ -33,8 +33,8 @@
               <h3><%= @question.comments.count %> - Comentario(s)</h3>
             </div>
             
-            <%= render partial: "comments", locals: {comments: @question.comments} %>
-            <%= render partial: "comments_form", locals: {objectComment: @question} %>
+            <%= render partial: "questions/comments", locals: {comments: @question.comments} %>
+            <%= render partial: "questions/comments_form", locals: {objectComment: @question} %>
             
           </div>
       	</div>
@@ -48,7 +48,7 @@
           <div class="answer-summary">
         	  <div class="cp">
         	    <div class="answer-votes">
-        	      <%= render partial: "vote", locals: {objectVote: answer} %>
+        	      <%= render partial: "questions/vote", locals: {objectVote: answer} %>
         	    </div>
         	  </div>
         	  
@@ -62,8 +62,8 @@
                 <h3><%= answer.comments.count %> - Comentario(s)</h3>
               </div>
         	    
-        	    <%= render partial: "comments", locals: {comments: answer.comments} %>
-        	    <%= render partial: "comments_form", locals: {objectComment: answer} %>
+        	    <%= render partial: "questions/comments", locals: {comments: answer.comments} %>
+        	    <%= render partial: "questions/comments_form", locals: {objectComment: answer} %>
         	    
         	  </div>   
         	</div>  
