@@ -17,6 +17,8 @@ es:
         email: "Email"
       comment:
         body: "Comentario"
+      answer:
+        body: "Respuesta"
     errors:
       models:
         question:
