@@ -9,6 +9,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    
+    # Este variable de instancia se crea para validar el modelo de comentarios a la hora de crearlos
+    @comment = Comment.new
   end
   
   def new
