@@ -27,7 +27,7 @@
             
             <div class="summary">
               <span class="question-title"><%= link_to question.title, question %></span>
-              <span class="question-description">Realizada por <%= question.user.email %> el <%= question.created_at.to_s(:db) %></span>
+              <span class="question-description">Realizada por <%= question.user.email %> <%= time_ago_in_words question.created_at %></span>
             </div>
           </div>
 
