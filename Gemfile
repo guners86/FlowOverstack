@@ -31,9 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Anotacion en los modelos
 gem 'annotate'
 
-# Gemas para Markdown
-gem 'redcarpet'
-gem 'coderay'
+# Markdown
+gem 'redcarpet', '~> 3.0.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
